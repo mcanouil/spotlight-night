@@ -48,8 +48,7 @@ create_spotlight_night <- function(
   ) {
     file_name <- file.path(
       dirname(output),
-      sub("\\..*", "", basename(output)),
-      sub("\\.png", "_%02d.png", basename(output))
+      basename(output)
     )
     dir.create(
       path = dirname(file_name),
@@ -65,27 +64,20 @@ create_spotlight_night <- function(
       params = rmd_params,
       output_yaml = output_yaml
     )
-    output_pngs <- sapply(
-      X = seq_len(1),
-      FUN = function(i) {
-        xaringanBuilder::build_png(
-          input = xaringan_poster,
-          output_file = sprintf(file_name, i),
-          slides = i,
-          density = 300
-        )
-        img_file <- sprintf(file_name, i)
-        img <- magick::image_read(img_file)
-        img <- magick::image_trim(img)
-        img <- magick::image_resize(img, "1920x1005!")
-        img <- magick::image_write(img, img_file)
-        img_file
-      }
-    )
-
     on.exit(unlink(xaringan_poster))
 
-    invisible(output_pngs)
+    xaringanBuilder::build_png(
+      input = xaringan_poster,
+      output_file = file_name,
+      slides = i,
+      density = 300
+    )
+    img <- magick::image_read(file_name)
+    img <- magick::image_trim(img)
+    img <- magick::image_resize(img, "1920x1005!")
+    img <- magick::image_write(img, file_name)
+
+   invisible(file_name)
   }
   callr::r(
     func = render_poster,

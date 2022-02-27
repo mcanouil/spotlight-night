@@ -16,13 +16,12 @@ source("assets/create_spotlight_night.R")
 rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
 
 posters <- sub("\\.R$", "", basename(rscripts))
-pngs <- sprintf("posters/%s/%s.png", posters, posters)
-thumbs <- sprintf("thumbs/%s.png", posters)
+pngs <- sprintf("posters/%s.png", posters)
 
-outdated <- !file.exists(thumbs) |
+outdated <- !file.exists(posters) |
   (
-    as.POSIXct(posters) > file.mtime(thumbs) &
-    file.mtime(thumbs) < sapply(
+    as.POSIXct(posters) < Sys.Date() &
+    file.mtime(posters) < sapply(
       X = file.mtime(rscripts),
       FUN = function(x, y) max(c(x, y)),
       y = file.mtime("assets/create_spotlight_night.R")
@@ -43,7 +42,7 @@ cell <- sprintf(
       "</a>",
     "</td>"
   ),
-  dirname(pngs), posters, posters, posters
+  dirname(pngs), posters, pngs, posters
 )
 
 cols <- 4
@@ -52,7 +51,7 @@ rows <- ceiling(length(cell) / cols)
 row_id <- rep(seq_len(rows), each = cols, length.out = length(cell))
 row_cells <- split(cell, row_id)
 
-cat("<table>\n")
+cat('<table width="100%%">\n')
 cat(paste0("<tr>", sapply(row_cells, paste, collapse = ""), "</tr>"), sep = "")
 cat("</table>\n")
 ```
