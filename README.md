@@ -16,5 +16,11 @@
 <td align="center">
 <img alt="Poster for 2022-03-03 Spotlight night" src="posters/2022-03-03.png" width="100%" height="auto" />
 </td>
+<td align="center">
+<img alt="Poster for 2022-04-07 Spotlight night" src="posters/2022-04-07.png" width="100%" height="auto" />
+</td>
+<td align="center">
+<img alt="Poster for 2022-05-05 Spotlight night" src="posters/2022-05-05.png" width="100%" height="auto" />
+</td>
 </tr>
 </table>
