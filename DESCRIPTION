@@ -11,8 +11,10 @@ License: MIT + file LICENSE
 Depends:
     R (>= 4.0.0)
 Imports:
-  callr,
-  magick,
+  callr, 
+  pdftools, 
+  qpdf, 
+  magick, 
   chromote, 
   xaringanBuilder,
   rmarkdown,
