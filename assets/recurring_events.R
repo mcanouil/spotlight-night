@@ -13,7 +13,7 @@ rcode <- sprintf(
     "create_spotlight_night(",
     '  output = "posters/%s.png",',
     "  rmd_params = list(",
-    '    title = "%s",',
+    '    number = "%s",',
     '    date = "Jeudi %s %s 2022 à 21 h 00"',
     "  )",
     ")",

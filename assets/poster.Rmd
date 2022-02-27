@@ -1,9 +1,9 @@
 ---
 params:
-  title: "1"
+  number: "1"
   date: "Jeudi 30 Septembre 2021 à 21 h 00"
   group: "Les Sorties Lilloises (LSL)"
-title: "<img src='https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg' width = '150px' style='margin-bottom:-50px'/></br>.red[SPOT]LIGHT <h2 style='margin-top:-0.25em;'><b class = 'red' style = 'font-size:125%;'>S</b>cène <b class = 'red' style = 'font-size:125%;'>O</b>uverte <b class = 'red' style = 'font-size:125%;'>#`r params[['title']]`</b></h2>"
+title: "<img src='https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg' width = '150px' style='margin-bottom:-50px'/></br>.red[SPOT]LIGHT <h2 style='margin-top:-0.25em;'><b class = 'red' style = 'font-size:125%;'>S</b>cène <b class = 'red' style = 'font-size:125%;'>O</b>uverte <b class = 'red' style = 'font-size:125%;'>#`r params[['number']]`</b></h2>"
 author: 'Mickaël C. -- `r params[["group"]]`'
 subtitle: '.red[`r sub("à", ".white[à]", params[["date"]])`]'
 pagetitle: "SpotLight Night"
