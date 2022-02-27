@@ -30,60 +30,21 @@ outdated <- !file.exists(thumbs) |
   )
 message("Rendering posters ...")
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
-
-message("Rendering thumbs images ...")
-dir.create("thumbs", showWarnings = FALSE, recursive = TRUE)
-invisible(Map(
-  f = function(path_in, path_out) {
-    if (!file.exists(path_in)) return(NULL)
-    image <- magick::image_read(path_in)
-    image <- magick::image_resize(image, "192x")
-    magick::image_write(image, path_out)
-  },
-  sub("\\.png", "_01.png", pngs)[which(outdated)],
-  thumbs[which(outdated)]
-))
-
-message("Removing past posters ...")
-unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE, force = TRUE)
-if (length(list.files("posters")) == 0) {
-  file.create("posters/.gitkeep")
-} else {
-  unlink("posters/.gitkeep")
-}
-if (length(list.files("thumbs")) == 0) {
-  file.create("thumbs/.gitkeep")
-} else {
-  unlink("thumbs/.gitkeep")
-}
 ```
 
 ```{r, results = "asis", echo = FALSE}
 cell <- sprintf(
   paste0(
     '<td align = "center">',
-      '<img alt="Poster for %s Spotlight night" src="%s" width="100%%" height="auto" />',
-      "<br/>",
-      "%s",
+      '<a href="%s">',
+        '<img alt="Poster for %s Spotlight night" src="%s" width="100%%" height="auto" />',
+        "<br/>",
+        "%s",
+      "</a>",
     "</td>"
   ),
-  posters, thumbs, posters
+  dirname(pngs), posters, posters, posters
 )
-
-if (any(future_gn <- as.Date(posters) >= Sys.Date())) {
-  cell[which(future_gn)] <- sprintf(
-    paste0(
-      '<td align = "center">',
-        '<a href="%s">',
-          '<img alt="Poster for %s Spotlight night" src="%s" width="100%%" height="auto" />',
-          "<br/>",
-          "%s",
-        "</a>",
-      "</td>"
-    ),
-    dirname(pngs), posters, thumbs, posters
-  )[which(future_gn)]
-}
 
 cols <- 4
 rows <- ceiling(length(cell) / cols)

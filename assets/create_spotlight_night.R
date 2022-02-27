@@ -25,12 +25,12 @@
 # library(xaringanBuilder)
 # library(magick)
 
-#' create_game_night
+#' create_spotlight_night
 #' @import callr
 #' @import rmarkdown
 #' @import xaringanBuilder
 #' @import magick
-create_game_night <- function(
+create_spotlight_night <- function(
   input = "assets/poster.Rmd",
   output,
   rmd_params,
