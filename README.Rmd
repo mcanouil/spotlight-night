@@ -35,14 +35,10 @@ invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
 cell <- sprintf(
   paste0(
     '<td align = "center">',
-      '<a href="%s">',
-        '<img alt="Poster for %s Spotlight night" src="%s" width="100%%" height="auto" />',
-        "<br/>",
-        "%s",
-      "</a>",
+    '<img alt="Poster for %s Spotlight night" src="%s" width="100%%" height="auto" />',
     "</td>"
   ),
-  dirname(pngs), posters, pngs, posters
+  posters, pngs
 )
 
 cols <- 4
