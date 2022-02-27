@@ -1,3 +1,5 @@
+# [Humour] SpotLight - Scène Ouverte # (MC)
+
 L'obtention et/ou la réservation d'une place sur place ou en ligne (6€) est à la charge du participant ou de la participante.
 Aucune réservation de groupe ne sera faite puisque le Spotlight n'en prend pas.
 De ce fait, il est conseillé de venir 10/15 (voire 30 minutes) avant le début de la "Scène Ouverte".
