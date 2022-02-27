@@ -69,7 +69,7 @@ create_spotlight_night <- function(
     xaringanBuilder::build_png(
       input = xaringan_poster,
       output_file = file_name,
-      slides = i,
+      slides = 1,
       density = 300
     )
     img <- magick::image_read(file_name)
