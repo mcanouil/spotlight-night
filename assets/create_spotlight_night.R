@@ -21,72 +21,85 @@
 # SOFTWARE.
 
 # library(callr)
-# library(rmarkdown)
-# library(xaringanBuilder)
-# library(magick)
+# library(quarto)
+# library(webshot2)
 
-#' create_spotlight_night
-#' @import callr
-#' @import rmarkdown
-#' @import xaringanBuilder
-#' @import magick
 create_spotlight_night <- function(
-  input = "assets/poster.Rmd",
   output,
-  rmd_params,
-  output_yaml = "assets/_output.yaml",
-  chrome_path = NULL,
-  delay = 1
+  input = "assets/poster.qmd",
+  chrome_path = NULL
 ) {
+  # "/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
   message(sprintf("Running %s", basename(output)))
-
-  render_poster <- function(
-    input, output,
-    rmd_params, output_yaml,
-    chrome_path,
-    delay = 1
-  ) {
-    file_name <- file.path(
-      dirname(output),
-      basename(output)
+  if (!all(dir.exists("posters"))) {
+    invisible(
+      lapply(
+        X = "posters",
+        FUN = dir.create,
+        showWarnings = FALSE,
+        mode = "0755"
+      )
     )
-    dir.create(
-      path = dirname(file_name),
-      showWarnings = FALSE,
-      recursive = TRUE,
-      mode = "0775"
-    )
-
-    xaringan_poster <- rmarkdown::render(
-      input = input,
-      output_dir = tempdir(),
-      encoding = "UTF-8",
-      params = rmd_params,
-      output_yaml = output_yaml
-    )
-    on.exit(unlink(xaringan_poster))
-
-    xaringanBuilder::build_png(
-      input = xaringan_poster,
-      output_file = file_name,
-      slides = 1,
-      density = 300
-    )
-    img <- magick::image_read(file_name)
-    img <- magick::image_trim(img)
-    img <- magick::image_resize(img, "1920x1005!")
-    img <- magick::image_write(img, file_name)
-
-   invisible(file_name)
   }
   callr::r(
-    func = render_poster,
+    func = function(input, output, chrome_path) {
+      if (!is.null(chrome_path)) Sys.setenv(CHROMOTE_CHROME = chrome_path)
+      on.exit(unlink(sub("\\.qmd$", ".html", input)))
+      cap <- function(string) {
+        string <- strsplit(string, " ")[[1]]
+        capped <- grep("^[A-Z]", string, invert = TRUE)
+        substr(string[capped], 1, 1) <- toupper(substr(string[capped], 1, 1))
+        return(string)
+      }
+      Sys.setlocale("LC_TIME", "fr_FR.UTF-8")
+      html_poster <- quarto::quarto_render(
+        input = input,
+        execute_params = list(
+          number = sum(
+            as.Date(sub("\\.png$", "", list.files(
+              path = dirname(output),
+              pattern = "\\.png$"
+            ))) < as.Date(sub("\\.png$", "", basename(output)))
+          ) + 1,
+          date = paste(
+            c(
+              cap(format(as.Date(sub("\\.png$", "", basename(output))), "%A %d %B %Y")),
+              "à 21 h 00"
+            ),
+            collapse = " "
+          )
+        ),
+        quiet = TRUE
+      )
+      webshot2::webshot(
+        url = sub("\\.qmd$", ".html", input),
+        file = output,
+        vwidth = 1920,
+        vheight = 1005
+      )
+
+      if (
+        !all(file.exists(sprintf("contents/contents-%02d.png", 1:4)))
+      ) {
+        for (i in 1:4) {
+          webshot2::webshot(
+            url = sprintf(
+              "file:////%s#%s",
+              normalizePath(sub("\\.qmd$", ".html", input)),
+              i
+            ),
+            file = sprintf("contents/contents-%02d.png", i),
+            vwidth = 1920,
+            vheight = 1005
+          )
+        }
+      }
+      invisible(output)
+    },
     args = list(
       input = input,
       output = output,
-      rmd_params = rmd_params,
-      output_yaml = output_yaml,
-      delay = delay
+      chrome_path
     )
   )
 }

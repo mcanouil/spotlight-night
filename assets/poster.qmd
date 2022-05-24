@@ -1,0 +1,26 @@
+---
+pagetitle: "SpotLight Night"
+title: |
+    <img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg" width="200px" style="margin-bottom:-50px;margin-top:-50px;"/></br><span class="red">SPOT</span>LIGHT
+subtitle: |
+  <b class="red" style="font-size:125%;">S</b>cène <b class="red" style="font-size:125%;">O</b>uverte <b class="red" style="font-size:125%;">#`r params[["number"]]`</b>
+author: '`r sub("à", "<span class=\"white\">à</span>", params[["date"]])`'
+institute: '<u>Mickaël C.</u> -- `r params[["group"]]`'
+format:
+  revealjs:
+    width: 1380
+    height: 700
+    self-contained: true
+    slide-number: false
+    menu: false
+    progress: false
+    html-math-method: plain
+    theme: default.scss
+    footer: '<a href = "https://creativecommons.org/licenses/by-sa/4.0/">License: CC-BY-SA-4.0</a>'
+    include-in-header: favicon.html
+    background-image: cover.jpg
+params:
+  number: "1"
+  date: "Jeudi 30 Septembre 2021 à 21 h 00"
+  group: "Les Sorties Lilloises"
+---

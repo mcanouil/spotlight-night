@@ -1,0 +1,93 @@
+/*-- scss:defaults --*/
+
+@import url(https://fonts.googleapis.com/css?family=Finger+Paint:300,300i,400,400i,500,500i,700,700i);
+
+// fonts
+$font-family-sans-serif: 'Finger Paint', 'Droid Serif', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', sans-serif !default;
+
+// colors
+$body-bg: #dc3223 !default;
+$body-color: #e8e7e2 !default;
+$link-color: $body-color !default;
+
+$code-bg: $body-color !default;
+$code-color: $body-bg !default;
+
+$code-block-bg: $body-color !default;
+$code-block-border-color: $body-color !default;
+
+/*-- scss:rules --*/
+
+.red {
+  color: $body-bg;
+}
+
+.white {
+  color: $body-color;
+}
+
+.reveal {
+  outline: thick double $body-color;
+  outline-offset: -30px;
+}
+
+.reveal .backgrounds {
+  background-size: cover;
+  z-index: -1;
+}
+
+#title-slide .title {
+  font-size: 3em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px 2px $body-bg;
+  color: $body-color !important;
+}
+
+#title-slide .title .red {
+  text-shadow: 2px 2px 2px $body-color;
+}
+
+#title-slide .subtitle {
+  font-size: 3em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  // text-shadow: 1px 1px 2px $body-bg;
+  // color: $body-color !important;
+}
+
+#title-slide .author {
+  font-size: 1.5em;
+  color: $body-bg;
+  // text-shadow: 1px 1px 2px $body-color;
+}
+
+#title-slide .date {
+  font-size: 1.5em;
+}
+
+#title-slide .institute {
+  font-size: 0.75em;
+  // text-shadow: 1px 1px 2px $body-bg;
+}
+
+.footer,
+.slide-menu-button,
+.slide-number,
+.reveal.has-logo .slide-number {
+  bottom: 0px !important;
+  color: $body-bg !important;
+}
+
+.footer a {
+  color: $body-bg !important;
+}
+
+.slide-number, .reveal.has-logo .slide-number {
+  right: 10px !important;
+  top: unset !important;
+}
+
+.slide-menu-button {
+  left: 10px !important;
+}
