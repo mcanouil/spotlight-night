@@ -31,10 +31,10 @@ create_spotlight_night <- function(
 ) {
   # "/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
   message(sprintf("Running %s", basename(output)))
-  if (!all(dir.exists(c("posters", "contents")))) {
+  if (!all(dir.exists("posters"))) {
     invisible(
       lapply(
-        X = c("posters", "contents"),
+        X = "posters",
         FUN = dir.create,
         showWarnings = FALSE,
         mode = "0755"
