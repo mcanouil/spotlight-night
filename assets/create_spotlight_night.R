@@ -64,7 +64,7 @@ create_spotlight_night <- function(
           date = paste(
             c(
               cap(format(as.Date(sub("\\.png$", "", basename(output))), "%A %d %B %Y")),
-              "à 19 h 30"
+              "à 21 h 00"
             ),
             collapse = " "
           )
