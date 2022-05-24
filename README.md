@@ -9,7 +9,7 @@ Spotlight Night Poster
 
 ## \[Humour\] SpotLight - Scène Ouverte \#4 (MC)
 
-<img alt="Poster for posters/2022-05-05 game night" src="posters/2022-05-05.png" />
+<img alt="Poster for posters/2022-09-30 game night" src="posters/2022-09-30.png" />
 
     L'obtention et/ou la réservation d'une place sur place ou en ligne (6€) est à la charge du participant ou de la participante.
     Aucune réservation de groupe ne sera faite puisque le Spotlight n'en prend pas.
@@ -44,6 +44,9 @@ Voir toutes les affiches.
 <table>
 <tr>
 <td>
+<img alt="Poster for posters/2022-09-30 game night" src="posters/2022-09-30.png" />
+</td>
+<td>
 <img alt="Poster for posters/2022-05-05 game night" src="posters/2022-05-05.png" />
 </td>
 <td>
@@ -52,8 +55,19 @@ Voir toutes les affiches.
 <td>
 <img alt="Poster for posters/2022-03-03 game night" src="posters/2022-03-03.png" />
 </td>
+</tr>
+<tr>
 <td>
-<img alt="Poster for posters/2021-09-30 game night" src="posters/2021-09-30.png" />
+<img alt="Poster for contents/contents-01 game night" src="contents/contents-01.png" />
+</td>
+<td>
+<img alt="Poster for contents/contents-02 game night" src="contents/contents-02.png" />
+</td>
+<td>
+<img alt="Poster for contents/contents-03 game night" src="contents/contents-03.png" />
+</td>
+<td>
+<img alt="Poster for contents/contents-04 game night" src="contents/contents-04.png" />
 </td>
 </tr>
 </table>
